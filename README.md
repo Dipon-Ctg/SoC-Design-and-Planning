@@ -773,9 +773,9 @@ Open with magic:
 
 ## Acknowledgements
 
-  - [](https://github.com/nickson-jose/vsdstdcelldesign)
-  - [](https://skywater-pdk.readthedocs.io/en/main/index.html)
-  - [](https://www.vlsisystemdesign.com/nasscom-positions-vsd-at-the-forefront-of-vlsi-skilling-initiatives-in-india/)
+  - [1](https://github.com/nickson-jose/vsdstdcelldesign)
+  - [2](https://skywater-pdk.readthedocs.io/en/main/index.html)
+  - [3](https://www.vlsisystemdesign.com/nasscom-positions-vsd-at-the-forefront-of-vlsi-skilling-initiatives-in-india/)
 
 ## Author
 [Dipon Barua](https://github.com/Dipon-Ctg)
