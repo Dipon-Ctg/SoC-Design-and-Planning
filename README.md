@@ -618,6 +618,7 @@ sta pre_sta.config
 ![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing2/3.png)
 
 Slack does not equal what we obtained during the synthesis stage, as can be seen. Still, we move forward with the CTS and routing.
+
 **CTS:**
 TritonCTS is the EDA tool that generates CTS. This tool so far generates the CTS for typical corner of std cells. 
 
