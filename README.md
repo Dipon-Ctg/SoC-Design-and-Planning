@@ -11,7 +11,8 @@
 
 ## About the project
 Welcome to the workshop for OpenLane! We will explore the process of creating an Application Specific Integrated Circuit (ASIC) using the OpenLane ASIC flow, starting from the Register Transfer Level (RTL) and ending with the Graphical Data System (GDS) file. The process consists of multiple essential phases, commencing with an RTL file and concluding with a GDS file
-![image](https://github.com/user-attachments/assets/9c98c3bf-0864-42bd-a62c-4325798da9f0)
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/openlane.flow.1.png)
 
 
 ### Built with
