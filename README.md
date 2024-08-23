@@ -382,3 +382,40 @@ ext2spice cthresh 0 rthresh 0
 ext2spice
 ```
 
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/inv/4.png)
+
+Now let's open the extracted SPICE file of sky130A inverter:
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/inv/5_spice.png)
+
+**Final Spice Deck:**
+Make the following changes in the ```'sky130_inv.spic'``` file:
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/inv/6_ext.png)
+
+Now to simulate in ngspice, use the following command while in the 'vsdstdcelldesign' directory:
+```
+ngspice sky130_inv.spice
+```
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/Tech_File/2.png)
+
+Now, to open the plot use plot y vs time a in the ngspice terminal
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/Tech_File/3.png)
+
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/Tech_File/4.png)
+
+**Characterization of inverter:**
+  -	Rise Time: The time for the output waveforms to transition from 20% to 80% of its maximum value.
+```From plot points: (x0 = 2.18192ns, y0 = 0.66049) to (x0 = 2.24571ns, y0 = 2.64018). Calculated Rise Time = 0.0634 ns```
+  -	Fall Time: The time for the output waveform to transition from 80% to 20% of its maximum value.
+```From plot points: (x0 = 4.0525ns, y0 = 2.63976) to (x0 = 4.09516ns, y0 = 0.659249). Calculated Fall Time = 0.0422 ns```
+  -	Propagation Delay (Cell Rise Delay): The time for the output to transition 50% in response to a 50% change in the input.
+```From plot points: Input (x0 = 2.15018ns, y0 = 1.65018) to Output (x0 = 2.21088ns, y0 = 1.65). Calculated Propagation Delay = 0.064 ns```
+  -	Cell Fall Delay: The delay for the output to transition 50% due to a 50% change at the input.
+```From plot points: (x0 = 4.04997ns, y0 = 1.65) to (x0 = 4.07748ns, y0 = 1.65). Calculated Cell Fall Delay = 0.0277 ns.```
+
+
+
