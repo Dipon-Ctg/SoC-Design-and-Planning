@@ -13,8 +13,8 @@
   - [Good Floorplan Vs Bad Floorplan and Introduction to Library cells and placement](#Good_Floorplan_Vs_Bad_Floorplan_and_Introduction_to_Library_cells_and_palcement)
   - [Routing](#routing)
 - [Lab](#lab)
-  - [Lab 1: Getting Familiar with Openlane EDA tools](#Lab_1:_Getting_Familiar_with_Openlane_EDA_tools)
-  - [Lab 2: Steps of run floorplan and placement using OpenLANE](#Lab_2:_Steps_of_run_floorplan_and_placement_using_OpenLANE)
+  - [Lab 1: Getting Familiar with Openlane EDA tools](#Lab_1_Getting_Familiar_with_Openlane_EDA_tools)
+  - [Lab 2: Steps of run floorplan and placement using OpenLANE](#Lab_2_Steps_of_run_floorplan_and_placement_using_OpenLANE)
   - [Lab 3: Inverter Characterization using Sky130 Model Files](#Lab_3_Inverter_Characterization_using_Sky130_Model_Files)
   - [Lab 4: Pre-layout timing analysis & importance of good clock tree](#Lab_4_Pre-layout_timing_analysis_&_importance_of_good_clock_tree)
   - [Lab 5: Final Steps to generate GDSII](#Lab_5_Final_Steps_to_generate_GDSII)
@@ -146,7 +146,7 @@ Power for the rectangular close-loop rings comes from the pads. Power straps are
 Like placement, routing occurs in three steps. However, the TritonRoute tools slow down the Global and Detail routing stages.
   - Global Route- The global route generates a routing guide to rapidly construct a high-level routing solution. The routing guide is made up of boxes that represent cell pins.
   - Detail Route- The global route's output, including the routing guidelines, is used by the detailed route. TritonRoute is used to perform detailed routes. To determine which route point has the best connectivity overall, algorithms are used.
-    
+        
     ![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Ref/route3.png)
 
 ## Lab
@@ -319,3 +319,66 @@ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs
 ![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/placement/5.png)
 
 ![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/placement/6.png)
+
+### Lab 3: Inverter Characterization using Sky130 Model Files
+**Make some changes while being in the flow:**
+Open lane allows you to make some changes during the flow, without interrupting the complete flow.
+Variables in the floorplan, such as IO mode and core utilization, can be altered. As an illustration, to modify the layout's IO pin alignment, we must first confirm the pins presence of the pins. Navigate to the directory shown in the following image:
+```
+/home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/10-08_13-18/results/floorplan
+```
+Then use the command to open the ```‘.def'``` file in magic:
+```
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def
+```
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/floorplan/magic/3.png)
+
+Pins are spaced at random, as may be observed. IO Placer (an open-source EDA tool) supports four techniques. Now, open the floorplan and navigate to the following directory if you want it to switch to a different IO pin floorplan.tcl data:
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/floorplan_IP_Pin/1.png)
+
+From here we can see the switching variable ```FP_IO_MODE = 1```, hence pins are randomly equidistant. Now, we run the following command and change the IO placer settings:
+```
+set ::env(FP_IO_MODE) 2
+```
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/floorplan_IP_Pin/2.png)
+
+Now, we can check the change in the IO placer strategy: We can see that ```.def``` file has been updated from the time stamps and date:
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/floorplan/11.png)
+
+Now, open it on magic
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/floorplan_IP_Pin/3.png)
+
+Clone ```‘vsdstdcelldesign’``` repo from git:
+The repository ```"vsdstdcelldesign"``` contains the .mag file for the inverter and spice models for sky130 nmos/pmos transistors.
+Git repo link:
+```
+git clone https://github.com/nickson-jose/vsdstdcelldesign.git
+```
+Now, open the sky130_inv.mag file in magic:
+```
+magic -T sky130A.tech sky130_inv.mag &
+```
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/floorplan_IP_Pin/4.png)
+
+**Sky130 INVERTER Basic Layout:**
+The source, drain, gate, VDD, and ground terminals of the inverter opened in the magic tool are shown in Figure below. When polysilicon crosses the ndiffusion region it is termed as 'NMOS' and when it crosses the pdiffusion region it is termed as 'PMOS', the same is verified in the image below:
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/Sky130_INV.png)
+
+Create STD cell layout:
+Details to create a std cell layout are here- [GitHub](https://github.com/nickson-jose/vsdstdcelldesign?tab=readme-ov-file)
+
+Extract the spice netlist in Magic-
+In the tckon window, use the following command:
+```
+extract all
+ext2spice cthresh 0 rthresh 0
+ext2spice
+```
+
