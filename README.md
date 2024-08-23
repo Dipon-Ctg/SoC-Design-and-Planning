@@ -135,5 +135,16 @@ Every element in the netlist, such as the AND, OR, and FF gates, has a correspon
 
 **Placement:**
 Placement is the process of placing of all standard cells that are present in the netlist by the tool into the core area. The tool also optimizes the design while placing. Trail routing also can be done by the tool. The main goal of placement is – 1. to timing, area, and power optimization. 2. Minimize congestion and congestion hotspots 3. Minimum cell density, pin density.
-  - Placement is done by three steps: 1. **Global Placement* 2. *Legalization* 3. *Details Placement*.
+  - Placement is done by three steps: 1. *Global Placement* 2. *Legalization* 3. *Details Placement*.
+
+### Routing
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Ref/Route.png)
+
+The green region in the associated picture represents the picorv32a design. The blue pads serve as the ground connection, while the red pads are for power.
+Power for the rectangular close-loop rings comes from the pads. Power straps are the vertical lines that attach to the rings. Vertical straps hold the power and ground rails of the standard cells. Standard cells need to be higher than the rail pitch to guarantee correct power and ground connection. The power flows from the outside to the pads, pads to rings, rings to strap/stripe, and strap/stripe to stdcell rows as depicted in this figure.
+Like placement, routing occurs in three steps. However, the TritonRoute tools slow down the Global and Detail routing stages.
+  - Global Route- The global route generates a routing guide to rapidly construct a high-level routing solution. The routing guide is made up of boxes that represent cell pins.
+  - Detail Route- The global route's output, including the routing guidelines, is used by the detailed route. TritonRoute is used to perform detailed routes. To determine which route point has the best connectivity overall, algorithms are used.
+    ![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Ref/route3.png)
 
