@@ -110,4 +110,5 @@ If every component has a surface area of one square unit. Since there are 4 comp
     - In this Case, when calculated
       - Utilization factor = (4 sq units) / (4 sq units) = 1
       - Aspect Ratio = (2 units) / (2 units) = 1 //The core is in a square shape.
+        
     ![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/floorplan_IP_Pin/ff5.png)
