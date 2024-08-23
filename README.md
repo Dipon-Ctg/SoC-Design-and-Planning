@@ -3,7 +3,7 @@
 ## Table of Contents
 
 - [About the project](#about_the_project)
-  - [Built with] (#built_with)
+  - [Built with](#built_with)
 - [Getting Started](#getting_strated)
 
 
