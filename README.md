@@ -284,14 +284,14 @@ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs
 ![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/floorplan/magic/1.png)
 Design Alignment Instructions:
 
-  - Centering the design:
+  - Centering the design:\
   ```1. Press s to select the entire design```\
   ```2. Press v to vertically align it to the middle of the screen.```
-  - Zooming In on a specific area:
+  - Zooming In on a specific area:\
   ```1. Left click and drag to select the desired region.```\
   ```2. Right-click to bring up the context menu.```\
   ```3. Press Z to zoom in on the selected area.```
-  - Getting Details of a Cell:
+  - Getting Details of a Cell:\
   ```1. Move your cursor to the cell of interest.```\
   ```2. Press S to select the cell.```\
   ```3. In the tkcon window, enter the command "what" to display cell details.```
