@@ -77,3 +77,12 @@ There are many steps involved in the IC design flow are-
 PnR, the central component of the ASIC design flow, is made up of many phases. The steps and corresponding tools that OpenLANE uses are listed below:
   -	Synthesis: creates a gate-level netlist, maps cells, and sets up pre-layout STA.RTL design, library (standard cells and macros), and restrictions (design objectives, anticipated temporal behavior, and surroundings) are the inputs.
   ![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Ref/synthesis.png)
+  - Floorplanning: Major decisions are made at this stage, such as how to divide the system into blocks and subsystems, arrange the blocks on the chip, and assign memory, macros, standard cells, and other resources. Power planning and IO cell layout occur during floorplanning.
+  ![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Ref/floorplan.png)
+  -	Placement: The design’s stdcell placement is determined by the placement phases. This stage involves estimating the wire length, then placing the wires while taking that estimate into account. Placement consists of three steps of flow for completing the whole placement stage. The typical flow of placement is - Global placement, Legalization, and Detailed placement.
+    ![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Ref/placement.png)
+  -	Clock-Tree synthesis (CTS): This stage involves wiring the clock network and implementing the clock tree netlist, which includes buffers. This stage aims to reduce power dissipation and skew as much as possible. There are several different ways to disseminate the clock around the network, here are a few examples: Ad hoc, Grids, H-tree, Hybrid etc.
+      ![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Ref/H-tree.png)
+  -	Routing: Except for the clock and power supply, routing designs the wire arrangement for every net. There are two types of routing: Details Routing and Global routing. In the planning step known as global routing, the whole routing region is divided into rectangular tiles to construct a routing plan for a specific net. Each pre-assigned global tiles, where the real wires and vias are generated, has their actual routing determined by the detailed router.
+    ![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Ref/routing.png)
+   	![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Ref/routing.png)
