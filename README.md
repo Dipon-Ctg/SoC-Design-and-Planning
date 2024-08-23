@@ -418,7 +418,8 @@ Now, to open the plot use plot y vs time a in the ngspice terminal
 ```From plot points: (x0 = 4.04997ns, y0 = 1.65) to (x0 = 4.07748ns, y0 = 1.65). Calculated Cell Fall Delay = 0.0277 ns.```
 
 **DRC Rules:**
-The details about the MAGIC tool and its DRC rules can be seen [Magic](http://opencircuitdesign.com/magic/)
+The details about the MAGIC tool and its DRC rules can be seen [Magic](http://opencircuitdesign.com/magic/).
+
 We use the following command to download the Lab files used in this tutorial. The current location should be the home directory:
 ```
 sudo wget http://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz
@@ -429,7 +430,7 @@ Once downloaded the zip file we extracted.
 
 Introduction to Magic & Steps to load sky130 tech-rules:
 Run the ```command magic -d XR``` to open the Magic tool.
-Now open the met3.mag file in magic.
+Now open the ```met3.mag``` file in magic.
 
 ![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/drc/2.png)
 
