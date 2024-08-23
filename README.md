@@ -149,3 +149,5 @@ Like placement, routing occurs in three steps. However, the TritonRoute tools sl
     
     ![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Ref/route3.png)
 
+## Lab
+### Lab 1: Getting Familiar with Openlane EDA tools
