@@ -10,7 +10,7 @@
 - [Roadmap](#roadmap)
 - [Theory](#theory)
   - [Introduction to IC Design, Components and Terminology](#Introduction_to_IC_Design,_Components_and_Terminology)
-  - [Good Floorplan Vs Bad Floorplan and Introduction to Library cells](#Good_Floorplan_Vs_Bad_Floorplan_and_Introduction_to_Library_cells)
+  - [Good Floorplan Vs Bad Floorplan and Introduction to Library cells and placement](#Good_Floorplan_Vs_Bad_Floorplan_and_Introduction_to_Library_cells_and_palcement)
   - [Routing](#routing)
 - [Lab](#lab)
 - [Acknowledgements](#acknowledgements)
