@@ -99,7 +99,7 @@ The size of the core region will be decided by the design's netlist, which consi
 
 If every component has a surface area of one square unit. Since there are 4 components in our netlist, a minimum of 4 square units will be needed for the core area.
   ![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/floorplan_IP_Pin/ff3.png)
-  -  Utilization Factor: The Utilization Factor is the ratio of the core area that the netlist occupies to the overall area of the core. The Utilization Factor should be less than 1 in an efficient floor layout since if it hits 1, there won't be any more room for logic to be added, which results in a poor floor plan.
+  -  **Utilization Factor:** The Utilization Factor is the ratio of the core area that the netlist occupies to the overall area of the core. The Utilization Factor should be less than 1 in an efficient floor layout since if it hits 1, there won't be any more room for logic to be added, which results in a poor floor plan.
     - Utilization Factor = (Area occupied by netlist / Total core area)
   - **Aspect Ratio:** The height-to-width ratio of the core is known as the aspect ratio. The core is said to be square-shaped when the aspect ratio is 1. The core will be shaped like a rectangle if the aspect ratio is not 1.
     - Aspect Ratio = (Height of the core / Width of the core)
