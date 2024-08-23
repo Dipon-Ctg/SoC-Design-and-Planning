@@ -21,7 +21,9 @@ Any ASIC implementation revolves around Place and Route (PnR), and Openlane flow
   - Generating gate-level netlist (yosys).
   - Performing cell mapping (abc).
   - Performing pre-layout STA (OpenSTA).
-
+- Floorplanning
+  - •	Defining the core area for the macro as well as the cell sites and the tracks (init_fp).
+  - 
 ##  Getting Started
 
 ### Prerequisites
