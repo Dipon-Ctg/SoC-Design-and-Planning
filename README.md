@@ -135,5 +135,5 @@ Every element in the netlist, such as the AND, OR, and FF gates, has a correspon
 
 **Placement:**
 Placement is the process of placing of all standard cells that are present in the netlist by the tool into the core area. The tool also optimizes the design while placing. Trail routing also can be done by the tool. The main goal of placement is – 1. to timing, area, and power optimization. 2. Minimize congestion and congestion hotspots 3. Minimum cell density, pin density.
-  Placement is done by three steps: 1. Global Placement 2. Legalization 3. Details Placement.
+  - Placement is done by three steps: 1. Global Placement 2. Legalization 3. Details Placement.
 
