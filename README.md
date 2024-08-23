@@ -620,11 +620,124 @@ sta pre_sta.config
 Slack does not equal what we obtained during the synthesis stage, as can be seen. Still, we move forward with the CTS and routing.
 
 **CTS:**
-TritonCTS is the EDA tool that generates CTS. This tool so far generates the CTS for typical corner of std cells. 
+TritonCTS is the EDA tool that generates CTS. This tool so far generates the CTS for typical corners of std cells. 
 
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing2/6.png)
 
+This will swap out the outdated layout for the optimized one. After the update is finished, use the same instructions to go on to the Floorplan stage.
+```
+init_floorplan
+place_io
+tap_decap_or
+Following the Floorplan's successful completion, we use the following instructions to go on to the placement step: run_placement
+```
 
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing2/4.png)
 
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing2/5.png)
 
+```
+run_cts
+```
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing2/17.png)
+
+The clock buffers are inserted at the cts stage, changing the netlist. We can see that a new.cts file has been created to the synthesis results directory once the ```cts``` has finished. Both the prior netlist and the clock buffers created during the CTS stage are contained in the recently added CTS file.
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing2/7.png)
+
+Timing Analysis with real clocks:
+Open openroad tools by command-
+```
+openroad
+```
+We first generate the database (made from lef and def files) in openroad for time analysis. Execute the subsequent commands:
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing2/8.png)
+
+```
+read_def /openLANE_flow/designs/picorv32a/runs/18-08_15-37/results/cts/picorv32a.cts.def
+```
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing2/9.png)
+
+```
+write_db pico_cts.db
+```
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing2/10.png)
+
+```
+read_db pico_cts.db
+read_verilog /openLANE_flow/designs/picorv32a/runs/18-08_15-37/results/synthesis/picorv32a.synthesis_cts.v
+read_liberty $::env(LIB_SYNTH_COMPLETE)
+read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
+set_propagated_clock [all_clocks]
+report_checks -path_delay min_max -format full_clock_expanded -digits 4
+```
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing2/11.png)
+
+The slack in the setup time is satisfied
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing2/12.png)
+
+Layers of metal are placed during routing. As a result, the arrival time will rise and we can lower the slack for hold time, but it will decrease for setup time due to the inclusion of the metals' capacitance and resistance.
+Now, use exit to exit from the openroad. Check the current buffer used in the CTS netlist by commanding:
+```
+echo $::env(CTS_CLK_BUFFER_LIST)
+```
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing2/13.png)
+
+Now remove the clkbuf_1 from the list:
+```
+set ::env(CTS_CLK_BUFFER_LIST) [lreplace $::env(CTS_CLK_BUFFER_LIST) 0 0]
+```
+```run_cts``` again.
+It was fail to load, then we use 
+```
+top
+kill -9 [problem id]
+```
+This is because, as the figure below illustrates, the current DEF value is incorrect. We must utilize the DEF value for placement because buffer 1 has been eliminated; however, following CTS, the DEF value was modified to the CTS DEF value.
+```set def as placement def```
+```
+set ::env(CURRENT_DEF) /openLANE_flow/designs/picorv32a/runs/18-08_15-37/results/placement/picorv32a.placement.def
+```
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing2/15.png)
+
+Openlane inserts buffers from left to right and verifies the skew value while constructing the CTS in an attempt to satisfy the skew value. Within the first 10% of the clock period, the skew value is found.
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing2/16.png)
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing2/17.png)
+
+We now must take the same actions as we did previously on the ```openroad```. visit openroad periodically:
+```
+read_lef /openLANE_flow/designs/picorv32a/runs/18-08_15-37/tmp/merged.lef
+read_def /openLANE_flow/designs/picorv32a/runs/18-08_15-37/results/cts/picorv32a.cts.def
+write_db pico_cts1.db
+read_db pico_cts1.db
+read_verilog /openLANE_flow/designs/picorv32a/runs/18-08_15-37/results/synthesis/picorv32a.synthesis_cts.v
+read_liberty $::env(LIB_SYNTH_COMPLETE)
+link_design picorv32a
+read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
+set_propagated_clock [all_clocks]
+report_checks -path_delay min_max -fields {slew trans net cap input_pins} -format full_clock_expanded -digits 4
+```
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing2/18.png)
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing2/19.png)
+
+```
+report_clock_skew -hold
+report_clock_skew -setup
+
+```
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing2/20.png)
 
 
