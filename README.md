@@ -61,6 +61,7 @@ A thorough design path in integrated circuit (IC) development, Register Transfer
 
 ![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Ref/complete%20flow.png)
 
+## Theory
 ### Introduction to IC Design, Components and Terminology
 The process of connecting circuit elements to carry out a specified intended function is called integrated circuit (IC) design. ICs are found on almost every electrical gadget you use. Since Gordon Moore noted in 1965 (Moore's Law (opens in a new tab)) that the number of transistors in an integrated circuit (IC) doubles every two years, a lot has happened.  There are two main domains of IC design—digital and analog—and most real-world ICs are a mix of the two.
 IC Design Flow:
