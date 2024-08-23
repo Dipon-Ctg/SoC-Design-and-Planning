@@ -12,6 +12,6 @@ Welcome to the workshop for OpenLane! We will explore the process of creating an
 ### Built with
 Any ASIC implementation revolves around Place and Route (PnR), and Openlane flow includes several essential open-source tools that carry out each of the PnR steps. The steps and corresponding tools that Openlane calls for the specified features are listed below:
 - Synthesis
- - Generating gate-level netlist (yosys).
- - Performing cell mapping (abc).
- - Performing pre-layout STA (OpenSTA).
+  - Generating gate-level netlist (yosys).
+  - Performing cell mapping (abc).
+  - Performing pre-layout STA (OpenSTA).
