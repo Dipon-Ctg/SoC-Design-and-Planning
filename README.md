@@ -86,3 +86,23 @@ PnR, the central component of the ASIC design flow, is made up of many phases. T
   -	Routing: Except for the clock and power supply, routing designs the wire arrangement for every net. There are two types of routing: Details Routing and Global routing. In the planning step known as global routing, the whole routing region is divided into rectangular tiles to construct a routing plan for a specific net. Each pre-assigned global tiles, where the real wires and vias are generated, has their actual routing determined by the detailed router.
     ![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Ref/routing.png)
    	![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Ref/routing2.png)
+
+### Good_Floorplan_Vs_Bad_Floorplan_and_Introduction_to_Library_cells_and_palcement
+**Chip Floorplanning Considerations:**
+Utilization Factor and Aspect Ratio: The Ratio of Utilization and Aspect Ratio we must first determine the height and width of the core and die regions to calculate the Utilization Factor and Aspect Ratio.
+  -	The core of a chip is where all the logic cells and other parts are located. That's where a chip's logic is found.
+  -	The die, which surrounds the core region, is where I/O-related components are placed.
+  ![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/floorplan_IP_Pin/Screenshot%202024-08-22%20113921.png)
+
+The size of the core region will be decided by the design's netlist, which considers the quantity of parts required to carry out the design logic. Thus, the dimensions of the core region determine the height and breadth of the die area, as seen in the above picture. Take a netlist with two logic gates and two flip-flops, for instance.
+  ![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/floorplan_IP_Pin/ff2.png)
+
+If every component has a surface area of one square unit. Since there are 4 components in our netlist, a minimum of 4 square units will be needed for the core area.
+  ![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/floorplan_IP_Pin/ff3.png)
+    - **Utilization Factor:** The Utilization Factor is the ratio of the core area that the netlist occupies to the overall area of the core. The Utilization Factor should be less than 1 in an efficient floor layout since if it hits 1, there won't be any more room for logic to be added, which results in a poor floor plan.
+      - Utilization Factor = (Area occupied by netlist / Total core area)
+    - **Aspect Ratio:** The height-to-width ratio of the core is known as the aspect ratio. The core is said to be square-shaped when the aspect ratio is 1. The core will be shaped like a rectangle if the aspect ratio is not 1.
+      - Aspect Ratio = (Height of the core / Width of the core)
+
+    ![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/floorplan_IP_Pin/ff4.png)
+
