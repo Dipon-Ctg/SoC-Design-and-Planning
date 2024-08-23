@@ -13,7 +13,7 @@
   - [Good Floorplan Vs Bad Floorplan and Introduction to Library cells and placement](#Good_Floorplan_Vs_Bad_Floorplan_and_Introduction_to_Library_cells_and_palcement)
   - [Routing](#routing)
 - [Lab](#lab)
-  - [Lab 1: Getting Familiar with Openlane EDA tools](#lab_1_getting_familiar_with_openlane_eda_tools)
+  - [Lab 1: Getting Familiar with Openlane EDA tools](#lab_1:_getting_familiar_with_openlane_eda_tools)
   - [Lab 2: Steps of run floorplan and placement using OpenLANE](#Lab_2_Steps_of_run_floorplan_and_placement_using_OpenLANE)
   - [Lab 3: Inverter Characterization using Sky130 Model Files](#Lab_3_Inverter_Characterization_using_Sky130_Model_Files)
   - [Lab 4: Pre-layout timing analysis & importance of good clock tree](#Lab_4_Pre-layout_timing_analysis_&_importance_of_good_clock_tree)
