@@ -156,4 +156,11 @@ Useful Linux Command:
 ```
 pwd: It displays the present working directory and its path.
 cd: Using this command we can move in both ways in the directory tree.
+ls: It lists all the sub-directories and files present in the current directory.
+mkdir: Using this command, we can create a new directory.
+rmdir: Using his command, we can delete an existing directory.
+cp: For copying the file.
+gedit: Open file with text editor (gedit).
+help: Using this command we can know the working of any command.
+clear: This command clears the terminal.
 ```
