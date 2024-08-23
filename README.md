@@ -177,3 +177,24 @@ To enter bash while being in the openalne directory use the command:
 ``` 
 docker
 ```
+for the step-by-step openlane flow execution enter the following command
+```
+./flow.tcl -interactive
+```
+Now, we are in the Openlane. To input the required packages, use the following command:
+``` 
+% package require openlane
+```
+As there are various pre-built designs in the design’s subdirectory, we are choosing the "picorv32a.v" design on which we will implement the RTL to GDS flow. To carry out the synthesis on this design, we first need to set it up using the below command:
+```
+prep -design picorv32a
+```
+After preparation is complete, we can see a new directory with the latest date is created within the ```runs``` folder in ```picorv32a``` directory.
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/environment.png)
+
+```
+/home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs
+```
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/directory_in_run.png)
