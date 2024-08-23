@@ -7,6 +7,14 @@
 - [Getting Started](#getting_strated)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
+- [Roadmap](#roadmap)
+  - [Introduction to IC Design, Components and Terminology](#Introduction_to_IC_Design,_Components_and_Terminology)
+  - [Good Floorplan Vs Bad Floorplan and Introduction to Library cells](#Good_Floorplan_Vs_Bad_Floorplan_and_Introduction_to_Library_cells)
+  - [Routing](#routing)
+- [Theory](#theory)
+- [Lab](#lab)
+- [Acknowledgements](#acknowledgements)
+- [Author](#author)
 
 
 ## About the project
