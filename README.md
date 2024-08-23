@@ -773,6 +773,7 @@ Open with magic:
 
 ## Acknowledgements
 
+  - [Openlane](https://github.com/efabless/openlane2)
   - [GitHub](https://github.com/nickson-jose/vsdstdcelldesign)
   - [skywater_PDK](https://skywater-pdk.readthedocs.io/en/main/index.html)
   - [VSD](https://www.vlsisystemdesign.com/nasscom-positions-vsd-at-the-forefront-of-vlsi-skilling-initiatives-in-india/)
