@@ -62,7 +62,7 @@ A thorough design path in integrated circuit (IC) development, Register Transfer
 ![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Ref/complete%20flow.png)
 
 ### Introduction to IC Design, Components and Terminology
-The process of connecting circuit elements to carry out a specified intended function is known as integrated circuit (IC) design. ICs are found on almost every electrical gadget you use. Since Gordon Moore noted in 1965 (Moore's Law (opens in a new tab)) that the number of transistors in an integrated circuit (IC) doubles every two years, a lot has happened.  There are two main domains of IC design—digital and analog—and most real-world ICs are a mix of the two.
+The process of connecting circuit elements to carry out a specified intended function is called integrated circuit (IC) design. ICs are found on almost every electrical gadget you use. Since Gordon Moore noted in 1965 (Moore's Law (opens in a new tab)) that the number of transistors in an integrated circuit (IC) doubles every two years, a lot has happened.  There are two main domains of IC design—digital and analog—and most real-world ICs are a mix of the two.
 IC Design Flow:
 There are many steps involved in the IC design flow are-
   -	Architecture design
@@ -73,7 +73,7 @@ There are many steps involved in the IC design flow are-
 
 **Logic design:** To achieve the necessary functionality of the IC, macro-level building pieces are constructed and linked here. Usually, pre-existing components like sensors, processors, and memory are utilized. Circuit elements with high-level functional descriptions are broken down into the necessary low-level circuit parts. Software known as logic synthesis automates this procedure. To confirm that the design works, the set of devices is simulated. A digital logic simulator or an analog circuit simulator will be employed, contingent on the necessary level of modeling detail.
 
-**Physical Design:** This stage involves creating a layout for the linked forms of the necessary circuit components. To ascertain the position, form, and dimensions of the modules within a chip, a floorplan is initially created. Analyzing the chip area, latency, congestion, etc. helps determine where to put the components and prevent problems that might limit speed and performance.
+**Physical Design:** This stage involves creating a layout for the circuit components' linked forms. A floorplan is initially created to ascertain the position, form, and dimensions of the modules within a chip. Analyzing the chip area, latency, congestion, etc. helps determine where to put the components and prevent problems that might limit speed and performance.
 PnR, the central component of the ASIC design flow, is made up of many phases. The steps and corresponding tools that OpenLANE uses are listed below:
   -	Synthesis: creates a gate-level netlist, maps cells, and sets up pre-layout STA.RTL design, library (standard cells and macros), and restrictions (design objectives, anticipated temporal behavior, and surroundings) are the inputs.
   ![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Ref/synthesis.png)
@@ -149,7 +149,6 @@ Like placement, routing occurs in three steps. However, the TritonRoute tools sl
         
     ![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Ref/route3.png)
 
-## Lab
 ### Lab 1: Getting Familiar with Openlane EDA Tools
 
 Useful Linux Command: 
