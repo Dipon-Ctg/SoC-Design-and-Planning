@@ -248,3 +248,74 @@ The default value of these variables is set in the floorplan.tcl file of openlan
 
 ![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/floorplan/3.png)
 
+In the figure above several floorplan variables are set by default. One important variable to mention here is ```FP_IO_MODE``` below:
+```
+set ::env(FP_IO_MODE) 1; # 0 matching mode - 1 random equidistant mode
+```
+which is set as '1' when IO pins are random equidistant.
+
+**Floorplan results**
+After floorplan execution we go to the runs folder of picorv32a and open the latest date file name. Here one can check the implemented floorplan variables from the logs. 
+The file name ```ioPlacer.log``` will give metal layers number for verical and horizontal IO pins. The path to the file is below:
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/floorplan/8.png)
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/floorplan/9.png)
+
+Recall that the floorplan will have ```FP_IO_VMETAL 5``` if ```FP_IO_VMETAL``` was set to 4, and the floorplan will have ```FP_IO_HMETAL 4``` if ```FP_IO_HMETAL``` was set to 3.
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/floorplan/10.png)
+
+**Layout view in Magic:**
+When the floorplaning is completed, to view the results go to the path as shown below:
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/floorplan/11.png)
+
+open the design exchange file ```(.def):``` These results are useful. For example: we can see the die area:
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/floorplan/12.png)
+
+Now, to open this ```".def"``` file in magic, use the following command:
+```
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def
+```
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/floorplan/magic/1.png)
+Design Alignment Instructions:
+Centering the design:
+```1. Press s to select the entire design```
+```2. Press v to vertically align it to the middle of the screen.```
+
+Zooming In on a specific area:
+```1.	Left click and drag to select the desired region.```
+```2.	Right-click to bring up the context menu.```
+```3.	Press Z to zoom in on the selected area.```
+
+Getting Details of a Cell:
+```1.	Move your cursor to the cell of interest.```
+```2.	Press S to select the cell.```
+```3.	In the tkcon window, enter the command "what" to display cell details.```
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/floorplan/magic/2.png)
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/floorplan/magic/3.png)
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/floorplan/magic/4.png)
+
+**Placement**
+To initiate the placement process, use the following command:
+```
+run_placement
+```
+During placement execution the reduction of half parameter wire length is the main focus. The placement is stop when the overflow is converged After the Placement is done. To view the results Go to the following location:
+```
+/home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/10-08_13-18/results/placement
+```
+And then we can see ```'picorv32a.placement.def'``` file. To open it using MAGIC use the following command:
+```
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def
+```
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/placement/5.png)
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/placement/6.png)
