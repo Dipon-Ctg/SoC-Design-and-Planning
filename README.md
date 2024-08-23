@@ -117,3 +117,15 @@ If every component has a surface area of one square unit. Since there are 4 comp
       - Utilization factor = (4 squints) / (8 squints) = 0.5
       - Aspect Ratio = (2 units)/(4 units) = 0.5 / The core is in a rectangular shape.
 
+**Decoupling Capacitor:**
+There is an input transition area in IC where the nMOS and pMOS are conducted simultaneously. For that moment, there will be a significant short circuit current. A significant current will be needed if many of these cells are arranged in a row and switch simultaneously. This high current need, also known as voltage droop or ground bounce, has the potential to lower the VDD or raise the ground voltage. Decoupling capacitors or decap cells are positioned next to these power-hungry components to solve this problem. Currently, the decoupling capacitors rapidly discharge to provide these components with the required power when switching activities take place. The capacitors replenish when the switching is turned off, guaranteeing a steady and dependable power supply to important circuit components. Consequently, decap cells serve as charge reservoirs to maintain and improve the power delivery network. To preserve steady operation and avoid performance problems brought on by varying power supply circumstances, decaps are crucial in circuit design.
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/floorplan_IP_Pin/decaps.png)
+
+**Power Planning/ Pre-Placement:**
+It takes more than just decoupling capacitors to control how electricity is distributed across different blocks. Limitations associated with de-cap cells include greater chip size and leakage power. Electricity planning is therefore utilized to supply electricity efficiently. Two effects are possible in regions of the chip where there is a lot of switching activity: ground bounce and voltage drop. Voltage Drop: A large power demand occurs when several cells flip from 0 to 1 at the same time. These cells need a decrease in input voltage owing to inadequate power if the power comes from a single source. When the voltage level drops below the noise margin, this problem becomes more serious.
+A ground bounce occurs when several cells simultaneously flip from 1 to 0, dumping power to the ground pin at the same moment. As a result, the ground voltage rises momentarily rather than staying at zero. This causes "ground bounce," a phenomenon. When the voltage level is higher than the noise margin, a problem occurs.
+    ![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/floorplan_IP_Pin/pp2.png)
+  ![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/floorplan_IP_Pin/pp.png)
+
+
