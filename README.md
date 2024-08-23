@@ -76,4 +76,4 @@ There are many steps involved in the IC design flow are-
 **Physical Design:** This stage involves creating a layout for the linked forms of the necessary circuit components. To ascertain the position, form, and dimensions of the modules within a chip, a floorplan is initially created. Analyzing the chip area, latency, congestion, etc. helps determine where to put the components and prevent problems that might limit speed and performance.
 PnR, the central component of the ASIC design flow, is made up of many phases. The steps and corresponding tools that OpenLANE uses are listed below:
   -	Synthesis: creates a gate-level netlist, maps cells, and sets up pre-layout STA.RTL design, library (standard cells and macros), and restrictions (design objectives, anticipated temporal behavior, and surroundings) are the inputs.
-
+  ![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Ref/synthesis.png)
