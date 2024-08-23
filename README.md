@@ -105,5 +105,5 @@ If every component has a surface area of one square unit. Since there are 4 comp
   - **Aspect Ratio:** The height-to-width ratio of the core is known as the aspect ratio. The core is said to be square-shaped when the aspect ratio is 1. The core will be shaped like a rectangle if the aspect ratio is not 1.
     - Aspect Ratio = (Height of the core / Width of the core)
     
-      ![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/floorplan_IP_Pin/ff4.png)
+    ![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/floorplan_IP_Pin/ff4.png)
 
