@@ -163,7 +163,7 @@ ls: It lists all the sub-directories and files present in the current directory.
 mkdir: Using this command, we can create a new directory.
 rmdir: Using his command, we can delete an existing directory.
 cp: For copying the file.
-gedit: Open file with text editor (gedit).
+gedit: Open the file with a text editor (gedit).
 help: Using this command we can know the working of any command.
 clear: This command clears the terminal.
 ```
@@ -188,7 +188,7 @@ Now, we are in the Openlane. To input the required packages, use the following c
 ``` 
 % package require openlane
 ```
-As there are various pre-built designs in the design’s subdirectory, we are choosing the "picorv32a.v" design on which we will implement the RTL to GDS flow. To carry out the synthesis on this design, we first need to set it up using the below command:
+As there are various pre-built designs in the design’s subdirectory, we are choosing the "picorv32a.v" design on which we will implement the RTL to GDS flow. To carry out the synthesis of this design, we first need to set it up using the below command:
 ```
 prep -design picorv32a
 ```
