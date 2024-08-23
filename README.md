@@ -417,5 +417,41 @@ Now, to open the plot use plot y vs time a in the ngspice terminal
   -	Cell Fall Delay: The delay for the output to transition 50% due to a 50% change at the input.
 ```From plot points: (x0 = 4.04997ns, y0 = 1.65) to (x0 = 4.07748ns, y0 = 1.65). Calculated Cell Fall Delay = 0.0277 ns.```
 
+**DRC Rules:**
+The details about the MAGIC tool and its DRC rules can be seen [Magic](http://opencircuitdesign.com/magic/)
+We use the following command to download the Lab files used in this tutorial. The current location should be the home directory:
+```
+sudo wget http://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz
+```
+Once downloaded the zip file we extracted.
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/drc/1.png)
+
+Introduction to Magic & Steps to load sky130 tech-rules:
+Run the ```command magic -d XR``` to open the Magic tool.
+Now open the met3.mag file in magic.
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/drc/2.png)
+
+Fixing the error (Poly.9)
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/drc/3.png)
+
+Using the ```"box"``` command, measure the distance between the poly resistor and poly when you zoom in on the "Incorrect poly.p" layout. The measurement indicates a 0.210 µm spacing, which is less than the 0.480 µm "poly.9" DRC rule. However, there is no DRC mistake. Now let's fix this issue
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/drc/6.png)
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/drc/7.png)
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/drc/4.png)
+
+Go to the ```drc_tests``` directory and open the ```Sky130a.tech``` file. Look up "poly.9" and make the adjustments depicted in the following pictures. Once the changes are made, save the file.
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/drc/8.png)
+
+Reload the ```sky130A.tech``` file and re-run the DRC check by running the following commands in tkcon.
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/drc/9.png)
+
 
 
