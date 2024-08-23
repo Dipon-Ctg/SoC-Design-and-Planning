@@ -172,3 +172,6 @@ Library exchange format (LEF) is also termed as physical library because this fi
   - i) Technology LEF
   - ii) Standard cell/macro LEF
 
+**Design Preparation Step:**
+To enter bash while being in the openalne directory use the command:
+``` docker ```
