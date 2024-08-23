@@ -223,5 +223,28 @@ For more information, look at the results directory in synthesis.
 
 ![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/syn/syn.png)
 
+### Lab 2: Steps of run floorplan and placement using OpenLANE
 
+To achieve an error-free floorplanning process, designers need to be aware of specific factors, referred to as switches, that might have a big influence on the floorplan. Aspect ratio and usage factor, for example, are two crucial choices. Before beginning the floorplanning phase, designers must confirm that these criteria meet the project requirements. 
+The file ```README.md``` in the openlane configuration displays the different variables of the design flow. The path is shown below:
+
+```
+/home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/configuration
+```
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/syn/2.png)
+
+Below image shows different types of switches in floorplan stage after running floorplan.
+
+```
+run_floorplan
+```
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/floorplan/7.png)
+
+The image below illustrates various types of switches involved in the floorplanning phase and their description.
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/floorplan/2.png)
+
+The default value of these variables is set in the floorplan.tcl file of openlane configuration. The file path is the same as for ```README.md``` and is shown below:
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/floorplan/3.png)
 
