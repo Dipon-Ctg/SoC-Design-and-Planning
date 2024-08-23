@@ -491,7 +491,7 @@ Let’s open the LEF file
 
 ![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing/4.1.png)
 
-Next, we plug in the LEF file in the picorv32a design.
+Next, we plug in the LEF file in the ```picorv32a``` design.
 **Introduction to timing libs and steps to include new cells in the synthesis:**
 The Synthesis, Placement, and Route phases are now repeated. Our unique cell is added to the picorv32a Openlane Design Flow for this purpose. We ensure that the PWD we have is
 ```
@@ -522,7 +522,7 @@ Now, we need to modify the ```config.tcl``` file: Go to the picorv32a directory 
 
 ![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing/5.png)
 
-Now, launch the docker follow the standard procedures as indicated, and include some commands:
+Now, launch the docker following the standard procedures as indicated, and include some commands:
 ```
 ./flow.tcl -interactive
 package require openlane 0.9
@@ -568,3 +568,62 @@ echo $::env(SYNTH_DRIVING_CELL)
 # Now that the design is prepped and ready, we can run synthesis using the following command
 run_synthesis
 ```
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing/7.1.png)
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing/8.png)
+
+Now that the synthesis phase is over, we use the following command to finish the floorplan:
+```
+init_floorplan
+place_io
+tap_decap_or
+```
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing/9.png)
+
+After finishing the floorplan stage, we run placement
+```
+run_placement
+```
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing/10.png)
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing/11.png)
+
+Now we can see our slack problem is solved. 
+Now, to verify if the standard cell we generated was incorporated into the design or not by magic
+```
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
+```
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing/12.png)
+
+**Timing analysis with ideal clocks using openSTA:**
+Let's create an STA conf file (pre_sta.config) first in the directory ```/home/vsduser/Desktop/work/tools/openlane_working_dir/openlane```. In this file, we provide the fast and slow corner lib file, an old Verilog file, and an SDC file. After STA a new Verilog file is created. The file is shown below:
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing2/2.png)
+
+```my_sdc``` in the directory ```sky130_cinv.lef```
+```
+/home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src
+```
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing2/1.png)
+
+now run the static timing analysis using the following command
+```
+sta pre_sta.config
+```
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing2/3.png)
+
+Slack does not equal what we obtained during the synthesis stage, as can be seen. Still, we move forward with the CTS and routing.
+**CTS:**
+TritonCTS is the EDA tool that generates CTS. This tool so far generates the CTS for typical corner of std cells. 
+
+
+
+
+
+
+
