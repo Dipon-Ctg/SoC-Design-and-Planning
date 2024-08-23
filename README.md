@@ -198,3 +198,30 @@ After preparation is complete, we can see a new directory with the latest date i
 ```
 
 ![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/directory_in_run.png)
+
+To perform synthesis on the design, use the following command:
+```
+run_synthesis
+```
+**Results (Synthesis):**
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/syn/1.png)
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/syn/4.png)
+
+From the synthesis we get-
+```Number of D-Ff: 1613``` 
+```Number of cells: 14876```
+Now, we can calculate the FF (Flip Flop) ratio and FF percentage from the data according to the formula: 
+  - Flip Flop Ratio (Number of D-FF) / (Total number of Cells). For FF percentage FF ratio * 100.
+
+We get-
+```FF ratio in our design is – 0.1084``` 
+```And FF percentage is – 10.84%``` 
+
+For more information, look at the results directory in synthesis.
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/syn/syn.png)
+
+
+
