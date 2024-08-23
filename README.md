@@ -153,4 +153,7 @@ Like placement, routing occurs in three steps. However, the TritonRoute tools sl
 
 ### Lab 1: Getting Familiar with Openlane EDA Tools
 Useful Linux commands: 
-
+```Useful Linux Command:
+pwd: It displays the present working directory and its path.
+cd: Using this command we can move in both ways in the directory tree.
+```
