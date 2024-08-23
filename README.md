@@ -3,6 +3,7 @@
 ## Table of Contents
 
 - [About the project](#about_the_project)
+  - [Built with] (#built_with)
 - [Getting Started](#getting_strated)
 
 
@@ -15,3 +16,5 @@ Any ASIC implementation revolves around Place and Route (PnR), and Openlane flow
   - Generating gate-level netlist (yosys).
   - Performing cell mapping (abc).
   - Performing pre-layout STA (OpenSTA).
+
+##  Getting Started
