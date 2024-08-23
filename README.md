@@ -454,5 +454,117 @@ Reload the ```sky130A.tech``` file and re-run the DRC check by running the follo
 
 ![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/drc/9.png)
 
+### Lab 4: Pre-layout timing analysis & importance of good clock tree
 
+Commands to open the custom inverter layout
+```
+cd Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign
+magic -T sky130A.tech sky130_inv.mag &
+```
+Command for tkcon window:
+```
+help grid
+grid 0.46um 0.34um 0.23um 0.17um
+```
 
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing/1.png)
+
+The whole li1 layer is on the grid layer. The locations of the input and output ports are where the vertical and horizontal tracks converge. This fulfills the first requirement.
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing/con1.png)
+
+Additionally, we can observe that the standard cell's width equals the three grid/track boxes. As previously stated, the height and breadth of the standard cell should both be odd multiples of the vertical track pitch and the horizontal track pitch. This fulfills the second requirement.
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing/con2.png)
+
+Open the complete layout after saving it with a unique name.
+```
+save sky130_cinv.mag
+```
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing/2.1.png)
+
+Generate lef from the layout by command.
+```
+lef write
+Let’s open the LEF file
+```
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing/4.1.png)
+
+Next, we plug in the LEF file in the picorv32a design.
+**Introduction to timing libs and steps to include new cells in the synthesis:**
+The Synthesis, Placement, and Route phases are now repeated. Our unique cell is added to the picorv32a Openlane Design Flow for this purpose. We ensure that the PWD we have is
+```
+/home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign. From here, we copy the .lef file using the following commands:
+```
+```
+cp sky130_vsdinv.lef /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src
+```
+For the synthesis step, we need the std cell library files. Therefore we copy the .lib files from the directory vsdstdcelldesign/libs using the following commands:
+```
+cp sky130_fd_sc_hd__* /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src
+```
+Every standard cell's characterisation data (cell power, cell increase, cell transition, etc.) is contained in the```.lib``` file. Different speeds, temperatures, and voltage values are described for the files ```sky130_fd_sc_hd__typical.lib```, ```sky130_fd_sc_hd_fast.lib```, and ```sky130_fd_sc_hd__slow.lib```. The nmos/pmos transistors in ```sky130_fd_sc_hd__typical.lib``` are described at a temperature of 25°C and a voltage of 1.8 volts, meaning they are neither fast nor slow. Our customized cell will be added to all of the typical, slow, and fast libraries.
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing/fast_lib1.png)
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing/fast_lib2.png)
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing/slow_lib1.png)
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing/slow_lib2.png)
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing/typical_lib1.png)
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing/typical_lib2.png)
+
+Now, we need to modify the ```config.tcl``` file: Go to the picorv32a directory and open the file using gedit and we make the following modifications:
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing/5.png)
+
+Now, launch the docker follow the standard procedures as indicated, and include some commands:
+```
+./flow.tcl -interactive
+package require openlane 0.9
+#to continue the work in the already made directory in the runs folder
+prep -design picorv32a -tag  18-08_15-37 -overwrite
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+```
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/overwrite.png)
+
+Now run synthesis by command
+```
+run_synthesis
+```
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing/6.png)
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing/6.1.png)
+
+It is evident from the preceding image that synthesis was effective. 1554 instances of our cinverter are utilized in total. Additionally, we can observe that the ```overall negative slack is -711.59``` and the ```worst slack is -23.89```. ```147712.918``` is the chip area.
+At this point, we can attempt a timing-driven synthesis to reduce the slack. To improve the delay, we must trade off the chip area for this.
+We opened the README.md from the directory and saw the variable ```‘SYNTH STRATEGY’``` ```‘SYNTH BUFFERING’``` ```‘SYNTH SIZING’``` ```‘SYNTH DRIVING CELL’```. Change the variable to reduce the slack.
+
+```
+# Now once again we have to prep the design to update the variables
+prep -design picorv32a -tag 18-08_15-37  -overwrite
+# Addiitional commands to include newly added lef to openlane flow merged.lef
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+# Command to display the current value of variable SYNTH_STRATEGY
+echo $::env(SYNTH_STRATEGY)
+# Command to set a new value for SYNTH_STRATEGY
+set ::env(SYNTH_STRATEGY) "DELAY 3"
+# Command to display the current value of variable SYNTH_BUFFERING to check whether it's enabled
+echo $::env(SYNTH_BUFFERING)
+# Command to display the current value of variable SYNTH_SIZING
+echo $::env(SYNTH_SIZING)
+# Command to set a new value for SYNTH_SIZING
+set ::env(SYNTH_SIZING) 1
+# Command to display the current value of variable SYNTH_DRIVING_CELL to check whether it's the proper cell or not
+echo $::env(SYNTH_DRIVING_CELL)
+# Now that the design is prepped and ready, we can run synthesis using the following command
+run_synthesis
+```
