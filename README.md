@@ -125,7 +125,9 @@ There is an input transition area in IC where the nMOS and pMOS are conducted si
 **Power Planning/ Pre-Placement:**
 It takes more than just decoupling capacitors to control how electricity is distributed across different blocks. Limitations associated with de-cap cells include greater chip size and leakage power. Electricity planning is therefore utilized to supply electricity efficiently. Two effects are possible in regions of the chip where there is a lot of switching activity: ground bounce and voltage drop. Voltage Drop: A large power demand occurs when several cells flip from 0 to 1 at the same time. These cells need a decrease in input voltage owing to inadequate power if the power comes from a single source. When the voltage level drops below the noise margin, this problem becomes more serious.
 A ground bounce occurs when several cells simultaneously flip from 1 to 0, dumping power to the ground pin at the same moment. As a result, the ground voltage rises momentarily rather than staying at zero. This causes "ground bounce," a phenomenon. When the voltage level is higher than the noise margin, a problem occurs.
+
     ![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/floorplan_IP_Pin/pp2.png)
+    
   ![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/floorplan_IP_Pin/pp.png)
 
 
