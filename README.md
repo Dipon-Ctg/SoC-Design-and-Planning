@@ -5,6 +5,8 @@
 - [About the project](#about_the_project)
   - [Built with](#built_with)
 - [Getting Started](#getting_strated)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
 
 
 ## About the project
@@ -18,3 +20,9 @@ Any ASIC implementation revolves around Place and Route (PnR), and Openlane flow
   - Performing pre-layout STA (OpenSTA).
 
 ##  Getting Started
+
+### Prerequisites
+The session expands upon an Ubuntu (only) system and Openlane. Installing a virtual machine on Windows and running the "vsdworkshop" image file are the user's tasks; on Ubuntu, installing "VirtualBox" and following the lab instruction file's instructions are required. Students who register are given access to their accounts and all necessary resources.
+
+### Installation
+When the 'vsdworkshop' operating system is installed, all required files and tools are also installed. Follow the link if you wish to install it manually: [GitHub](https://github.com/nickson-jose/openlane_build_script)
