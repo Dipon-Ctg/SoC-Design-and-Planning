@@ -152,6 +152,7 @@ Like placement, routing occurs in three steps. However, the TritonRoute tools sl
 ## Lab
 
 ### Lab 1: Getting Familiar with Openlane EDA Tools
+
 Useful Linux Command: 
 ```
 pwd: It displays the present working directory and its path.
