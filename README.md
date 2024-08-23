@@ -629,8 +629,8 @@ This will swap out the outdated layout for the optimized one. After the update i
 init_floorplan
 place_io
 tap_decap_or
-Following the Floorplan's successful completion, we use the following instructions to go on to the placement step: run_placement
 ```
+Following the Floorplan's successful completion, we use the following instructions to go on to the placement step: ```run_placement```
 
 ![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing2/4.png)
 
@@ -741,3 +741,41 @@ report_clock_skew -setup
 ![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/timing2/20.png)
 
 
+### Lab 5: Final Steps to generate GDSII](#Lab_5_Final_Steps_to_generate_GDSII
+
+Before starting routing, we can create a power distribution network (PDN) after CTS is available. Let's use the following commands to examine our DEF file as it is now.
+```
+echo $::env(CURRENT_DEF)
+```
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/route/1.png)
+
+```
+gen_pdn
+```
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/route/2.png)
+
+The PDN output seen above demonstrates how PDN generates the grid and ground straps in addition to writing the LEF file and reading the CTS DEF. Since STD cells are positioned in STD rows as is well known, STD cell power rails are positioned along the rows of STD cells. The height of the stdcell inverter is equal to the pitch of the std cell rails, which is ```2.720```. As a result, the GND and PWR ports of the standard cell inverter match the power and ground standard cell rails.
+Run the following command for routing:
+```
+run_routing
+```
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/route/4.png)
+
+Open with magic:
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/route/7.png)
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Lab/route/picorv32a.def.png)
+
+
+## Acknowledgements
+
+  - [](https://github.com/nickson-jose/vsdstdcelldesign)
+  - [](https://skywater-pdk.readthedocs.io/en/main/index.html)
+  - [](https://www.vlsisystemdesign.com/nasscom-positions-vsd-at-the-forefront-of-vlsi-skilling-initiatives-in-india/)
+
+## Author
+[Dipon Barua](https://github.com/Dipon-Ctg)
