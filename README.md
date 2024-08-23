@@ -55,3 +55,8 @@ The session expands upon an Ubuntu (only) system and Openlane. Installing a virt
 
 ### Installation
 When the 'vsdworkshop' operating system is installed, all required files and tools are also installed. Follow the link if you wish to install it manually: [GitHub](https://github.com/nickson-jose/openlane_build_script)
+
+## Roadmap
+A thorough design path in integrated circuit (IC) development, Register Transfer Language (RTL) to Graphic Data System II (GDSII) converts a high-level hardware description into a physical layout suitable for foundry manufacturing. Starting with the RTL design, when the circuit's functionality is programmed into the hardware description languages using Verilog or VHDL, the RTL to GDSII process consists of many phases. The next step in the process is called synthesis, which turns this RTL code into a gate-level netlist. The physical design process begins with netlist creation and proceeds to floorplanning, placement, clock-tree synthesis (CTS), and routing. Signoff checks, such as Design Rule Checking (DRC), Layout Versus Schematic (LVS) checks, and Static Timing Analysis (STA), are performed following placement and routing.
+
+![image](https://github.com/Dipon-Ctg/SoC-Design-and-Planning/blob/main/reference/image/Ref/complete%20flow.png)
